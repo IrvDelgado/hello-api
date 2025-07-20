@@ -1,0 +1,12 @@
+{
+  "calculation": {
+    "success": "Cálculo de elegibilidad exitoso"
+  },
+  "validation": {
+    "error": "Falta información o hay datos inválidos, revisa tus respuestas."
+  },
+  "errors": {
+    "internal_server_error": "Error interno del servidor.",
+    "validation_error": "Solicitud inválida."
+  }
+}

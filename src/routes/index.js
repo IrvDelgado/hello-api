@@ -1,11 +1,9 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+const visaRoutes = require('./visaRoutes');
+const healthRoutes = require('./healthRoutes');
 
-app.get('/', (req, res) => {
-  res.send('Hello World from Raspberry Pi!');
-});
+const router = express.Router();
+router.use('/visa', visaRoutes);
+router.use('/health', healthRoutes);
 
-app.listen(port, () => {
-  console.log(`API is running on http://localhost:${port}`);
-});
+module.exports = router;
