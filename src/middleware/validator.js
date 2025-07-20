@@ -5,7 +5,7 @@ const visaEligibilitySchema = Joi.object({
   personalInfo: Joi.object({
     nationality: Joi.string().length(2).required(),
     age: Joi.number().min(18).max(99).required(),
-    educationLevel: Joi.string().valid('high_school', 'associate', 'bachelor', 'master', 'doctorate').required(),
+    degreeLevel: Joi.string().valid('high_school', 'associate', 'bachelor', 'master', 'doctorate').required(),
     englishProficiency: Joi.number().min(0).max(100).optional(),
     financialProof: Joi.number().min(0).max(100).optional(),
     academicRecord: Joi.number().min(0).max(100).optional(),
@@ -16,7 +16,7 @@ const visaEligibilitySchema = Joi.object({
     returnTicket: Joi.boolean().optional(),
     previousVisaRecord: Joi.boolean().optional(),
     age: Joi.number().min(0).max(120).optional()
-  }),
+  }).required(),
 
   employment: Joi.object({
     jobTitle: Joi.string().optional(),
@@ -54,10 +54,11 @@ const visaEligibilitySchema = Joi.object({
     jobCreation: Joi.number().optional()
   }).optional()
 });
-
 function validateVisaRequest(req, res, next) {
+  console.log('Request body received:', req.body);
   const { error } = visaEligibilitySchema.validate(req.body);
   if (error) {
+    console.log('Validation failed:', error.details);
     return res.status(400).json({
       success: false,
       message: req.t('validation.error'),
