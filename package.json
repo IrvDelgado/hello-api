@@ -1,15 +1,27 @@
 {
   "name": "hello-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "API for Latin America U.S. visa eligibility calculation",
   "dependencies": {
-    "express": "^5.1.0"
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.0.0",
+    "i18n": "^0.15.1",
+    "joi": "^17.9.2"
+  },
+  "devDependencies": {
+    "jest": "^30.0.4",
+    "nodemon": "^2.0.22",
+    "supertest": "^7.1.3"
   }
 }
