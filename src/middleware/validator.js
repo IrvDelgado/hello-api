@@ -68,5 +68,4 @@ function validateVisaRequest(req, res, next) {
   next();
 }
 
-
 module.exports = { validateVisaRequest };
