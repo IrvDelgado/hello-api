@@ -18,3 +18,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Visa calculator API listening on port ${port}`);
 });
+
+module.exports = app; // exporta el app para tests

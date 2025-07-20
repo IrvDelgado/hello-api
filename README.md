@@ -46,7 +46,7 @@ Compute eligibility/readiness score for all major U.S. visa types relevant to La
   "personalInfo": {
     "nationality": "MX",
     "age": 28,
-    "educationLevel": "bachelor"
+    "degreeLevel": "bachelor"
   },
   "employment": {
     "hasJobOffer": true,
