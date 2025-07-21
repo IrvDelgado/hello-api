@@ -5,7 +5,7 @@ module.exports = [
     name: 'Visa TN (Profesional USMCA/NAFTA)',
     criteria: [
       { key: 'nationality', value: 'MX', weight: 0.30, required: true },
-      { key: 'profession', check: 'NAFTA_LIST', weight: 0.22 },
+      { check: 'NAFTA_LIST', weight: 0.22, required: true },
       { key: 'degreeLevel', value: 'bachelor', weight: 0.18 },
       { key: 'hasJobOffer', value: true, weight: 0.20 },
       { key: 'englishProficiency', min: 70, weight: 0.10 }
@@ -18,7 +18,7 @@ module.exports = [
     name: 'Visa H-1B (Profesional Especializado)',
     criteria: [
       { key: 'degreeLevel', value: 'bachelor', weight: 0.22, required: true },
-      { key: 'occupationType', value: 'specialty', weight: 0.22 },
+      { key: 'jobType', value: 'specialty', weight: 0.22 },
       { key: 'hasJobOffer', value: true, weight: 0.21 },
       { key: 'salary', min: 40000, weight: 0.14 },
       { key: 'englishProficiency', min: 60, weight: 0.10 },
@@ -26,29 +26,29 @@ module.exports = [
     ]
   },
 
-  // H-2A Temporary Agricultural
+  // H-2A Temporary Agricultural (optimized for Latin Americans)
   {
     code: 'H2A',
     name: 'Visa H-2A (Trabajador Agrícola Temporal)',
     criteria: [
-      { key: 'nationalityEligible', value: true, weight: 0.18, required: true },
-      { key: 'jobType', value: 'agricultural', weight: 0.18, required: true },
-      { key: 'hasJobOffer', value: true, weight: 0.26 },
-      { key: 'seasonal', value: true, weight: 0.20 },
-      { key: 'age', min: 18, max: 65, weight: 0.18 }
+      { key: 'nationality', value: 'MX', weight: 0.15, required: false }, // Mexico preferred but not required
+      { key: 'jobType', value: 'agricultural', weight: 0.25, required: true },
+      { key: 'hasJobOffer', value: true, weight: 0.35, required: true }, // Most important
+      { key: 'seasonal', value: true, weight: 0.15 },
+      { key: 'age', min: 18, max: 60, weight: 0.10 } // More realistic age range
     ]
   },
 
-  // H-2B Temporary Non-Agricultural
+  // H-2B Temporary Non-Agricultural (optimized for Latin Americans)
   {
     code: 'H2B',
     name: 'Visa H-2B (Trabajador Temporal No Agrícola)',
     criteria: [
-      { key: 'nationalityEligible', value: true, weight: 0.2, required: true },
-      { key: 'jobType', value: 'nonagricultural', weight: 0.2, required: true },
-      { key: 'hasJobOffer', value: true, weight: 0.25 },
+      { key: 'nationality', value: 'MX', weight: 0.10, required: false }, // Mexico preferred
+      { key: 'jobType', value: 'nonagricultural', weight: 0.25, required: true },
+      { key: 'hasJobOffer', value: true, weight: 0.40, required: true }, // Most critical
       { key: 'seasonal', value: true, weight: 0.15 },
-      { key: 'age', min: 18, max: 65, weight: 0.2 }
+      { key: 'age', min: 18, max: 60, weight: 0.10 }
     ]
   },
 
@@ -78,16 +78,16 @@ module.exports = [
     ]
   },
 
-  // B-1/B-2 Visitor
+  // B-1/B-2 Visitor (optimized for Latin Americans)
   {
     code: 'B1B2',
     name: 'Visa B-1/B-2 (Visitante de Negocios/Turismo)',
     criteria: [
-      { key: 'purposeValid', value: true, weight: 0.18, required: true },
-      { key: 'financialProof', min: 30, weight: 0.2 },
-      { key: 'tiesHomeCountry', min: 45, weight: 0.22 },
-      { key: 'visitDuration', max: 180, weight: 0.18 },
-      { key: 'previousVisaRecord', value: true, weight: 0.12 },
+      { key: 'purposeValid', value: true, weight: 0.15, required: true },
+      { key: 'financialProof', min: 40, weight: 0.25 }, // Higher weight for financial proof
+      { key: 'tiesHomeCountry', min: 50, weight: 0.25 }, // Critical for Latin Americans
+      { key: 'visitDuration', max: 90, weight: 0.15 }, // Shorter is better
+      { key: 'previousVisaRecord', value: true, weight: 0.10 }, // Good but not critical
       { key: 'returnTicket', value: true, weight: 0.10 }
     ]
   },
