@@ -5,7 +5,15 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:all": "node Tests/runAllTests.js",
+    "test:api": "jest Tests/visa.test.js",
+    "test:enhanced": "jest Tests/visa.enhanced.test.js",
+    "test:scoring": "jest Tests/scoringService.test.js",
+    "test:professions": "jest Tests/naftaProfessions.test.js",
+    "test:validation": "jest Tests/validation.test.js"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +24,13 @@
     "dotenv": "^10.0.0",
     "express": "^5.1.0",
     "express-rate-limit": "^7.0.0",
+    "helmet": "^8.1.0",
     "i18n": "^0.15.1",
     "joi": "^17.9.2"
   },
   "devDependencies": {
     "jest": "^30.0.4",
+    "jest-html-reporters": "^3.1.7",
     "nodemon": "^2.0.22",
     "supertest": "^7.1.3"
   }
