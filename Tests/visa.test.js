@@ -59,7 +59,7 @@ describe('POST /api/v1/visa/eligibility', () => {
         personalInfo: {
           nationality: 'MX',
           age: 28,
-          degreeLevel: 'elementary' // invalid enum value
+          degreeLevel: 'elementaryasdfa' // invalid enum value
         }
       });
     expect(response.statusCode).toBe(400);

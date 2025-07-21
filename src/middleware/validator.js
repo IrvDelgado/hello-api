@@ -1,11 +1,21 @@
 const Joi = require('joi');
+const normalizeDegreeLevel = require('../utils/normalizeDegreeLevel');  
 
 // 📌 NEW expanded schema here
 const visaEligibilitySchema = Joi.object({
   personalInfo: Joi.object({
     nationality: Joi.string().length(2).required(),
     age: Joi.number().min(18).max(99).required(),
-    degreeLevel: Joi.string().valid('high_school', 'associate', 'bachelor', 'master', 'doctorate').required(),
+    degreeLevel: Joi.string().valid(
+      'none',
+      'elementary',
+      'middle_school',
+      'high_school',
+      'associate',
+      'bachelor',
+      'master',
+      'doctorate'
+    ).required(),
     englishProficiency: Joi.number().min(0).max(100).optional(),
     financialProof: Joi.number().min(0).max(100).optional(),
     academicRecord: Joi.number().min(0).max(100).optional(),
@@ -56,6 +66,12 @@ const visaEligibilitySchema = Joi.object({
 });
 function validateVisaRequest(req, res, next) {
   console.log('Request body received:', req.body);
+
+// Normalize degree level if present
+  if (req.body?.personalInfo?.degreeLevel) {
+    req.body.personalInfo.degreeLevel = normalizeDegreeLevel(req.body.personalInfo.degreeLevel); 
+  }
+
   const { error } = visaEligibilitySchema.validate(req.body);
   if (error) {
     console.log('Validation failed:', error.details);

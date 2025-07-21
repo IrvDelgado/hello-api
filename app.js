@@ -7,7 +7,7 @@ const routes = require('./src/routes');
 const errorHandler = require('./src/middleware/errorHandler');
 
 const app = express();
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 app.use(cors());
 app.use(express.json());
