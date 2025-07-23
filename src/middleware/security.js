@@ -10,6 +10,8 @@ const allowedOrigins = [
   'http://localhost:5176',
   'http://127.0.0.1:3000',
   'http://127.0.0.1:5173',
+  'https://www.pronostika.top/',
+  'https://visapathway.pages.dev/'
   // AÑADE TUS DOMINIOS DE PRODUCCIÓN AQUÍ:
   // 'https://tudominio.com',
   // 'https://www.tudominio.com',
