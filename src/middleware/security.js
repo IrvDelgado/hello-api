@@ -10,8 +10,9 @@ const allowedOrigins = [
   'http://localhost:5176',
   'http://127.0.0.1:3000',
   'http://127.0.0.1:5173',
-  'https://www.pronostika.top/',
-  'https://visapathway.pages.dev/'
+  'https://www.pronostika.top',
+  'https://visapathway.pages.dev',
+  'https://pronostika.top'
   // AÑADE TUS DOMINIOS DE PRODUCCIÓN AQUÍ:
   // 'https://tudominio.com',
   // 'https://www.tudominio.com',
@@ -25,7 +26,7 @@ const corsOptions = {
     if (!origin) return callback(null, true);
     
     // Verificar si el origin está en la lista permitida
-    if (allowedOrigins.indexOf(origin) !== -1) {
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       console.log(`🚫 CORS blocked origin: ${origin}`);
